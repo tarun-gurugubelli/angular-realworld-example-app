@@ -1,0 +1,36 @@
+name: Deploy Angular App
+
+on:
+  push:
+    branches:
+      - master  # Change if your main branch is different
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'  # Specify your Node.js version
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Angular app
+        run: npm run build --prod
+
+      - name: Deploy to server via SSH
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          source: "./dist/dce2/*"  # Adjust to your dist folder name
+          target: "/usr/share/nginx/html/"  # Path where Nginx serves files
+          strip_components: 1
