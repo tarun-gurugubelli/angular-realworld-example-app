@@ -12,7 +12,7 @@ pipeline {
                 script {
                     // Install dependencies and build the Angular app
                     sh 'npm install'
-                    sh 'ng build --prod'
+                    sh 'ng build'
                 }
             }
         }
