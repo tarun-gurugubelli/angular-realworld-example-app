@@ -10,6 +10,6 @@ RUN npm install -g @angular/cli && npm install
 COPY . .
 
 # Expose port 4200 for Angular development server
-EXPOSE 4200
+EXPOSE 4300
 
-CMD ["ng", "serve", "--host", "0.0.0.0"]
+CMD ["ng", "serve", "--host", "0.0.0.0", "--port", "4300"]
