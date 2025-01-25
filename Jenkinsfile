@@ -25,7 +25,7 @@ pipeline {
             steps {
                 script {
                     // Run the Docker container to serve the Angular app
-                    sh "docker run -d -p 4300:80 ${DOCKER_USERNAME}/my-angular-app"
+                    sh "docker run -d -p 4300:4300 ${DOCKER_USERNAME}/my-angular-app"
                 }
             }
         }
