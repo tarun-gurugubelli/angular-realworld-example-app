@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     parameters {
-        string(name: 'DOCKER_USERNAME', defaultValue: '', description: 'Docker Hub Username')
+        string(name: 'DOCKER_USERNAME', defaultValue: 'tarungurugubelli', description: 'Docker Hub Username')
         password(name: 'DOCKER_PASSWORD', defaultValue: '', description: 'Docker Hub Password or Access Token')
     }
 
